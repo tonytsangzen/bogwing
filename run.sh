@@ -11,7 +11,7 @@ fi
 HOST="$(uname)"
 
 if [ "$HOST" = "Linux" ];then
-    EXEC=./bin/qemu-system-aarch64
+    EXEC=$TARGET_DIR/../bin/qemu-system-aarch64
 elif [ "$HOST" = "Darwin" ];then
     EXEC=qemu-system-aarch64
 else
