@@ -1,0 +1,9 @@
+export CPU=cortex-a53
+export MEMORY=128M
+export SMP=4
+export VMLINUXZ=vmlinuz-4.9.0-3-arm64
+export INITRD_IMG=initrd.img-4.9.0-3-arm64
+export SYSTEM_FILE=hda.qcow2
+export SYSTEM_FORMAT=qcow2
+export TARGET_PORT=22
+export HOST_PORT=10022
