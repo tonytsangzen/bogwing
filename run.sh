@@ -1,8 +1,9 @@
 #!/bin/sh
 
+ROOT_DIR=$PWD/${0%/*}
 
-if [ -n $1 ] && [ -d ./$1 -a -f $1/config ]; then
-    TARGET_DIR=$1
+if [ -n $1 ] && [ -d $ROOT_DIR/$1 ] && [ -f $ROOT_DIR/$1/config ]; then
+    TARGET_DIR=$ROOT_DIR/$1
 else
     echo select a platform:
     exit
@@ -11,11 +12,17 @@ fi
 HOST="$(uname)"
 
 if [ "$HOST" = "Linux" ];then
-    EXEC=$TARGET_DIR/../bin/qemu-system-aarch64
+    EXEC=$ROOT_DIR/bin/qemu-system-aarch64
 elif [ "$HOST" = "Darwin" ];then
     EXEC=qemu-system-aarch64
 else
     echo Unsupport Host: $HOST
+fi
+
+if [ -f "/.dockerenv" ];then
+	cd $ROOT_DIR
+	git pull origin master 
+	cd -
 fi
 
 . $TARGET_DIR/config

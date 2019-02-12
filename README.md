@@ -19,5 +19,5 @@ cd bogwin
 #### Docker
 ```Bash
 docker pull  tonytsangzen/bogwing-docker:latest
-docker run -it --name bogwing  tonytsangzen/bogwing-docker  /bogwing/run.sh /bogwing/raspberry
+docker run -it --name bogwing  tonytsangzen/bogwing-docker  /bogwing/run.sh raspberry
 ```
