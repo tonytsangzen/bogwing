@@ -1,0 +1,12 @@
+#core function define
+ARCH=arm
+CPU=arm1176
+MACHINE=versatilepb
+MEMORY=256M
+VMLINUXZ=zImage
+INITRD_IMG=piCore.gz
+#ext option config
+BOOT_ARGS="root=/dev/ram0 elevator=deadline rootwait quiet nozswap nortc noswap"
+#PORT_FOWARD=10022-:22
+VNC_PORT=1
+#EXT_PARAM="-no-reboot -serial stdio"
