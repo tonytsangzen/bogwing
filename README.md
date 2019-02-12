@@ -1,6 +1,6 @@
 # bogwing
-this is a emulator for yodaos
-
+A emulator for yodaOS
+![Image text](https://raw.githubusercontent.com/tonytsangzen/bogwing/master/bogwing.jpg)
 ### 1. HOW TO
 #### MacOS
 ```Bash
@@ -21,3 +21,5 @@ cd bogwin
 docker pull  tonytsangzen/bogwing-docker:latest
 docker run -it --name bogwing  tonytsangzen/bogwing-docker  /bogwing/run.sh raspberry
 ```
+
+#### [Link to yodaOS](https://github.com/yodaos-project/yodaos)
