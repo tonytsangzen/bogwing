@@ -1,0 +1,42 @@
+#!/bin/sh
+echo $EXEC_PATH
+if [ -z $1 ]||[ -z $2 ]||[ -z $3 ];then
+	echo unpack and pack  initrd file
+	echo usage: initrd-tools [pack:unpack] [img] [dir]
+	exit
+fi
+
+ACTION=$1
+IMG=$2
+DIR=$3
+BIN=$PWD/${0%/*}
+
+if [ $ACTION = "unpack" ];then
+	if [ ! -d $DIR ];then
+		echo $DIR is not a directory, create...
+		mkdir $DIR
+	fi
+
+	cd $DIR
+	cp ../$IMG ./initrd-temp-img.gz
+	gunzip initrd-temp-img.gz
+	cpio -idmv < initrd-temp-img
+	rm initrd-temp-img
+	cd ..
+elif [ $ACTION = "pack" ];then
+	if [ ! -d $DIR ];then
+                echo $DIR is not a directory, exit...
+                exit
+        fi
+
+	cd $DIR
+	find . | cpio -H newc -o > ../initrd-temp-img
+	cd ../
+	gzip initrd-temp-img -f
+	if [ -f $IMG ];then
+		echo $IMG file allready exist, rename to $IMG.bak
+		mv $IMG $IMG.bak
+	fi
+	mv initrd-temp-img.gz  $IMG
+fi
+

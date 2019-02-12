@@ -1,5 +1,5 @@
 export CPU=cortex-a53
-export MEMORY=128M
+export MEMORY=512M
 export SMP=4
 export VMLINUXZ=vmlinuz-4.9.0-3-arm64
 export INITRD_IMG=initrd.img-4.9.0-3-arm64
