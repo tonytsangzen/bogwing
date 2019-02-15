@@ -1,0 +1,7 @@
+#core function define
+ARCH=arm
+CPU=arm926
+MACHINE=versatilepb
+MEMORY=256M
+VMLINUXZ=EwokOS.bin
+INITRD_IMG=initfs

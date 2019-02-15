@@ -35,7 +35,11 @@ fi
 #include machine config 
 . $TARGET_DIR/config
 
-COMMAND="$EXEC-$ARCH -M $MACHINE -m $MEMORY -cpu $CPU -kernel $TARGET_DIR/$VMLINUXZ -initrd $TARGET_DIR/$INITRD_IMG"
+COMMAND="$EXEC-$ARCH -M $MACHINE -m $MEMORY -cpu $CPU -kernel $TARGET_DIR/$VMLINUXZ"
+
+if [ -n "$INITRD_IMG" ];then
+  COMMAND+=" -initrd $TARGET_DIR/$INITRD_IMG"
+fi
 
 #smp core config
 if [ -n "$SMP" ];then
@@ -57,14 +61,17 @@ else
   COMMAND+=" -nographic"
 fi
 
-if [ -n "EXT_PARAM" ];then
+if [ -n "$EXT_PARAM" ];then
   COMMAND+=" $EXT_PARAM"
 fi
 
-if [ -n "BOOT_ARGS" ];then
+if [ -n "$BOOT_ARGS" ];then
   COMMAND+=" -append \"${BOOT_ARGS}\""
 fi
 
+if [ -n "$GDB_PORT" ];then
+  COMMAND+=" -gdb tcp::$GDB_PORT"
+fi
 
-#echo $COMMAND
+echo $COMMAND
 eval $COMMAND
