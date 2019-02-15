@@ -3,6 +3,14 @@
 ROOT_DIR=$PWD/${0%/*}
 CFG_FILE=config
 
+#if run in docker, pull latest version
+if [ -f "/.dockerenv" ];then
+	cd $ROOT_DIR
+	git pull origin master 
+	cd -
+fi
+
+#check parameter
 if [ -n $1 ] && [ -d $ROOT_DIR/$1 ] && [ -f $ROOT_DIR/$1/$CFG_FILE ]; then
     TARGET_DIR=$ROOT_DIR/$1
 else
@@ -23,13 +31,6 @@ elif [ "$HOST" = "Darwin" ];then
 else
     echo Unsupport Host: $HOST
     exit -1
-fi
-
-#if run in docker, pull latest version
-if [ -f "/.dockerenv" ];then
-	cd $ROOT_DIR
-	git pull origin master 
-	cd -
 fi
 
 #include machine config 
