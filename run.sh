@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ROOT_DIR=$PWD/${0%/*}
 CFG_FILE=config
