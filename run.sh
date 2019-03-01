@@ -55,6 +55,10 @@ if [ -n "$PORT_FOWARD" ];then
   COMMAND+=" -net user,hostfwd=tcp::$PORT_FOWARD"
 fi
 
+if [ -n "$NET_ARGS" ];then
+  COMMAND+=" $NET_ARGS"
+fi
+
 if [ -n "$VNC_PORT" ];then
   echo "Run in VNC mode. VNC PORT is: `expr 5900 + $VNC_PORT`"
   COMMAND+=" -vnc :$VNC_PORT"
@@ -72,6 +76,16 @@ fi
 
 if [ -n "$GDB_PORT" ];then
   COMMAND+=" -gdb tcp::$GDB_PORT"
+fi
+
+if [ -n "$SOUND_CARD" ];then
+  COMMAND+=" -soundhw $SOUND_CARD"
+fi
+
+if [ -n "$INIT_SCRIPT" ];then
+  cd  $TARGET_DIR
+  ./$INIT_SCRIPT
+  cd -
 fi
 
 echo $COMMAND

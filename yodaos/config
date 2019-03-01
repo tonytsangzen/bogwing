@@ -1,0 +1,24 @@
+#core function define
+ARCH=aarch64
+CPU=cortex-a53
+MACHINE=virt
+MEMORY=512M
+VMLINUXZ=vmlinuz-4.9.0-3-arm64
+INITRD_IMG=initrd.img-4.9.0-3-arm64
+
+#ext option config
+#export QEMU_AUDIO_DRV=wav
+#export QEMU_WAV_PATH=tune.wav
+
+SMP=4
+SYSTEM_FILE=openwrt-brcm2708-bcm2710-rpi-3-ext4-factory.img
+SYSTEM_FORMAT=raw
+BOOT_ARGS="root=/dev/vda2 rootfstype=ext4 ro"
+#SOUND_CARD="es1370"
+#PORT_FOWARD=10022-:22
+#VNC=1
+NET_AARGS="-net nic -net user"
+
+#init parameter
+YODAOS_ROOT="../../yodaos"
+INIT_SCRIPT="init.sh"
