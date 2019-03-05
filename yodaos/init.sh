@@ -18,6 +18,7 @@ if [ ! -f "$SYSTEM_FILE" ];then
     fi
 fi
 
+mkdir mnt 2>/dev/null
 sudo mount -v -o offset=29360128 -t ext4 openwrt-brcm2708-bcm2710-rpi-3-ext4-factory.img  mnt
 sudo cp patch/* mnt/ -raf
 sudo umount mnt
