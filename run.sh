@@ -24,14 +24,7 @@ fi
 
 #determination host os
 HOST="$(uname)"
-if [ "$HOST" = "Linux" ];then
-    EXEC=$ROOT_DIR/bin/qemu-system
-elif [ "$HOST" = "Darwin" ];then
-    EXEC=qemu-system
-else
-    echo Unsupport Host: $HOST
-    exit -1
-fi
+EXEC=$ROOT_DIR/bin/${HOST}/qemu-system
 
 #include machine config 
 . $TARGET_DIR/config
